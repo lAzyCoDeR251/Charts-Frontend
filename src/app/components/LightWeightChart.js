@@ -42,7 +42,7 @@ const LightWeightChart = () => {
           },
         });
         setData(response.data);
-        console.log("this is the response: ", response.data);
+        // console.log("this is the response: ", response.data);
       } catch (error) {
         console.error("this is the error: ", error);
         setError(error);
