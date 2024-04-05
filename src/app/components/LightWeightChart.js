@@ -101,7 +101,6 @@ const LightWeightChart = () => {
       },
     ];
 
-
     chart.current.timeScale().fitContent();
 
     return () => {
@@ -144,22 +143,10 @@ const LightWeightChart = () => {
         adj_close: data.indicators.adjclose[0].adjclose[index],
       }));
 
-      // const fullData = data.timestamp
-      //   .map((timestamp, index) => ({
-      //     time: new Date(timestamp * 1000).toISOString().split("T")[0],
-      //     open: data.indicators.quote[0].open[index],
-      //     high: data.indicators.quote[0].high[index],
-      //     low: data.indicators.quote[0].low[index],
-      //     close: data.indicators.quote[0].close[index],
-      //     volume: data.indicators.quote[0].volume[index],
-      //   }))
-      //   .filter((dataPoint) => new Date(dataPoint.time) >= pastDate);
-      // console.log("this is full data", fullData);
-
       // Send image data to the backend as a Data URL using Axios
       axios
         .post(
-          "https://chart-backend-nura.onrender.com/api/upload",
+          "https://chart-backend-4zsf.onrender.com/api/upload",
           // `${window.location.origin}/api/upload`,
           { image: imgData, data: visibleData, fdata: fullData },
           {
