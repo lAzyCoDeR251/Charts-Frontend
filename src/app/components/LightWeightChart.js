@@ -37,14 +37,12 @@ const LightWeightChart = () => {
           // url: `https://yahoo-finance127.p.rapidapi.com/historic/${selectedResult}/1d/2000d`,
           url: `https://yahoo-finance127.p.rapidapi.com/historic/tcs.ns/1d/2000d`,
           headers: {
-            "X-RapidAPI-Key":
-              "abd9d4cad7mshaf985f2e231dfa0p193642jsn38ce770626fa",
-            // "X-RapidAPI-Key": "415347fdacmsh80e2f6b6508f47bp123ba3jsn6db232b7306e",
-            // "X-RapidAPI-Key": "abd9d4cad7mshaf985f2e231dfa0p193642jsn38ce770626fa",
+            "X-RapidAPI-Key": "abd9d4cad7mshaf985f2e231dfa0p193642jsn38ce770626fa",
             "X-RapidAPI-Host": "yahoo-finance127.p.rapidapi.com",
           },
         });
         setData(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error(error);
         setError(error);
