@@ -159,7 +159,7 @@ const LightWeightChart = () => {
       // Send image data to the backend as a Data URL using Axios
       axios
         .post(
-          "https://chart-backend-nura.onrender.com/api/upload",
+          "https://chart-backend-4zsf.onrender.com/api/upload",
           // `${window.location.origin}/api/upload`,
           { image: imgData, data: visibleData, fdata: fullData },
           {
