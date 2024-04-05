@@ -42,9 +42,9 @@ const LightWeightChart = () => {
           },
         });
         setData(response.data);
-        console.log(response.data);
+        console.log("this is the response: ", response.data);
       } catch (error) {
-        console.error(error);
+        console.error("this is the error: ", error);
         setError(error);
       } finally {
         setIsLoading(false); // Set loading state to false after fetch (success or error)
