@@ -37,7 +37,8 @@ const LightWeightChart = () => {
           // url: `https://yahoo-finance127.p.rapidapi.com/historic/${selectedResult}/1d/2000d`,
           url: `https://yahoo-finance127.p.rapidapi.com/historic/tcs.ns/1d/2000d`,
           headers: {
-            "X-RapidAPI-Key": "abd9d4cad7mshaf985f2e231dfa0p193642jsn38ce770626fa",
+            "X-RapidAPI-Key":
+              "abd9d4cad7mshaf985f2e231dfa0p193642jsn38ce770626fa",
             "X-RapidAPI-Host": "yahoo-finance127.p.rapidapi.com",
           },
         });
@@ -61,10 +62,12 @@ const LightWeightChart = () => {
       layout: {
         textColor: "black",
         background: { type: "solid", color: "white" },
+        barSpacing: 30,
       },
       crosshair: {
         mode: CrosshairMode.Normal,
       },
+      autoSize: true,
     };
 
     // const chart = createChart(containerRef.current, chartOptions);
@@ -102,6 +105,11 @@ const LightWeightChart = () => {
     ];
 
     chart.current.timeScale().fitContent();
+    // Add this line
+    chart.current.timeScale().setVisibleRange({
+      from: data.timestamp[data.timestamp.length - 100], // Adjust this value to your preference
+      to: data.timestamp[data.timestamp.length - 1],
+    });
 
     return () => {
       chart.current.remove(); // Cleanup chart when component unmounts
@@ -147,7 +155,7 @@ const LightWeightChart = () => {
       axios
         .post(
           "https://chart-backend-4zsf.onrender.com/api/upload",
-          // `${window.location.origin}/api/upload`,
+          // "http://localhost:8000/api/upload",
           { image: imgData, data: visibleData, fdata: fullData },
           {
             // Log the data before sending the request
@@ -175,10 +183,10 @@ const LightWeightChart = () => {
         snapshotData.bounding_boxes &&
         snapshotData.bounding_boxes.length > 0 && (
           <button
-            className="pr-5"
+            className="mr-5 p-[1px] border border-blue-700 bg-blue-600 hover:bg-blue-500 shadow-sm rounded-sm px-2 text-white text-sm"
             onClick={() => myRef.current.scrollIntoView({ behavior: "smooth" })}
           >
-            Output
+            Pattern Detected
           </button>
         )}
       <button
@@ -292,11 +300,11 @@ const LightWeightChart = () => {
           />
         )}
       </div>
-      <div className="w-full h-16 border border-gray-500 mt-1 p-2 rounded-lg shadow-lg shadow-black bg-white flex justify-between items-center">
+      <div className="w-full h-28 md:h-16 border border-gray-500 mt-1 p-2 rounded-lg shadow-lg shadow-black bg-white flex flex-col md:flex-row justify-between md:items-center">
         <div>
           {snapshotData && (
             <div
-              className={`pl-10 font-bold ${
+              className={`pl-2 md:pl-10 font-bold ${
                 snapshotData.predicted_stock === "Bullish sentiment"
                   ? "text-green-500"
                   : snapshotData.predicted_stock === "Bearish sentiment"
@@ -314,13 +322,17 @@ const LightWeightChart = () => {
           <Clock time={now.getTime()} />
         </div>
       </div>
-      <div ref={myRef} className="flex flex-col justify-center my-20">
+      <div
+        ref={myRef}
+        className="flex flex-col justify-center items-center my-20"
+      >
         {snapshotData && (
           <div className="w-5/6 h-4/6 mx-auto my-5">
             <img
               src={`data:image/png;base64,${snapshotData.graph}`}
               alt="graph"
             />
+            <p className="p-3 text-center">fig 1 : This is the Prediction: </p>
           </div>
         )}
         {snapshotData &&
@@ -333,6 +345,9 @@ const LightWeightChart = () => {
                   alt="Output"
                 />
               </div>
+              <p className="p-3 text-center">
+                fig 2 : This is the Pattern Detected on chart
+              </p>
               {/* <pre>{JSON.stringify(snapshotData.bounding_boxes, null, 2)}</pre> */}
             </>
           )}
