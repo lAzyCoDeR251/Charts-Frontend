@@ -16,7 +16,7 @@ const Clock = ({ time: initial }) => {
   }, []);
 
   return (
-    <div className="flex md:flex-col justify-between md:items-center mr-5">
+    <div className="flex md:flex-col justify-between md:items-center mr-5 text-black">
       {isClient ? (
         <>
           <span>{dateTime.toLocaleTimeString()}</span>

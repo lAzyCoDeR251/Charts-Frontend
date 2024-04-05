@@ -34,7 +34,7 @@ const SearchStocks = () => {
   };
 
   return (
-    <div className="relative hover:rounded-sm hover:bg-slate-200 m-[-4px] mx-2">
+    <div className="relative hover:rounded-sm hover:bg-slate-200 m-[-4px] mx-2 text-black">
       <button
         data-modal-target="default-modal"
         data-modal-toggle="default-modal"

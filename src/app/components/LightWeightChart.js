@@ -178,7 +178,7 @@ const LightWeightChart = () => {
   };
 
   const snapshotButton = (
-    <div className="flex items-center float-right">
+    <div className="flex items-center float-right text-black">
       {snapshotData &&
         snapshotData.bounding_boxes &&
         snapshotData.bounding_boxes.length > 0 && (
@@ -191,7 +191,7 @@ const LightWeightChart = () => {
         )}
       <button
         type="button"
-        className="button-merBkM5y apply-common-tooltip accessible-merBkM5y"
+        className="button-merBkM5y apply-common-tooltip accessible-merBkM5y text-black"
         tabIndex="-1"
         data-tooltip="Take a snapshot"
         aria-label="Take a snapshot"
