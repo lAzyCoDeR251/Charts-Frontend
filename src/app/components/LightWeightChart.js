@@ -34,8 +34,8 @@ const LightWeightChart = () => {
         setIsLoading(true);
         const response = await axios.request({
           method: "GET",
-          // url: `https://yahoo-finance127.p.rapidapi.com/historic/${selectedResult}/1d/2000d`,
-          url: `https://yahoo-finance127.p.rapidapi.com/historic/tcs.ns/1d/2000d`,
+          url: `https://yahoo-finance127.p.rapidapi.com/historic/${selectedResult}/1d/2000d`,
+          // url: `https://yahoo-finance127.p.rapidapi.com/historic/tcs.ns/1d/2000d`,
           headers: {
             "X-RapidAPI-Key":
               "abd9d4cad7mshaf985f2e231dfa0p193642jsn38ce770626fa",
