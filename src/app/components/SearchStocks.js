@@ -13,7 +13,7 @@ const SearchStocks = () => {
   const fetchSearchResults = async (term) => {
     const options = {
       method: "GET",
-      // url: `https://yahoo-finance127.p.rapidapi.com/search/${term}`,
+      url: `https://yahoo-finance127.p.rapidapi.com/search/${term}`,
       headers: {
         "X-RapidAPI-Key": "abd9d4cad7mshaf985f2e231dfa0p193642jsn38ce770626fa",
         "X-RapidAPI-Host": "yahoo-finance127.p.rapidapi.com",
@@ -30,8 +30,18 @@ const SearchStocks = () => {
 
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
-    fetchSearchResults(e.target.value);
+    // fetchSearchResults(e.target.value);
   };
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      fetchSearchResults(searchTerm);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [searchTerm]);
 
   return (
     <div className="relative hover:rounded-sm hover:bg-slate-200 m-[-4px] mx-2 text-black">
@@ -68,7 +78,7 @@ const SearchStocks = () => {
           id="default-modal"
           tabIndex="-1"
           aria-hidden="true"
-          className="overflow-y-auto overflow-x-hidden fixed top-10 right-0 left-60 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+          className="overflow-y-auto overflow-x-hidden fixed top-10 right-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
         >
           <div className="relative p-4 w-full max-w-2xl max-h-full top-10 md:left-80">
             <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
