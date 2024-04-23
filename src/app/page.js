@@ -4,7 +4,7 @@ import LightWeightChart from "./components/LightWeightChart";
 import SelectedResultContext from "./components/context/Context";
 
 export default function Home() {
-  const [selectedResult, setSelectedResult] = useState(null);
+  const [selectedResult, setSelectedResult] = useState("tcs.ns");
   const container = React.useRef();
   return (
     <SelectedResultContext.Provider
